@@ -1,0 +1,21 @@
+﻿train_id,coach_id,job_id,task,status,assigned_to,scheduled_date
+T001,C004,JC-001,Lighting Fix,In Progress,Tech-202,2025-09-08 0:00:00
+T001,C018,JC-002,Air Conditioning Check,Completed,Tech-404,2025-09-07 0:00:00
+T002,C007,JC-003,Lighting Fix,Completed,Tech-303,2025-09-03 0:00:00
+T002,C018,JC-004,Wheel Alignment,Completed,Tech-202,2025-08-30 0:00:00
+T003,C006,JC-005,Lighting Fix,Pending,Tech-101,2025-09-03 0:00:00
+T003,C004,JC-006,Door Repair,In Progress,Tech-101,2025-08-31 0:00:00
+T004,C002,JC-007,Brake Check,In Progress,Tech-404,2025-09-02 0:00:00
+T004,C020,JC-008,Air Conditioning Check,Pending,Tech-404,2025-08-30 0:00:00
+T005,C008,JC-009,Sensor Calibration,In Progress,Tech-202,2025-09-03 0:00:00
+T005,C015,JC-010,Air Conditioning Check,Pending,Tech-202,2025-08-28 0:00:00
+T006,C009,JC-011,Brake Check,In Progress,Tech-101,2025-08-22 0:00:00
+T006,C018,JC-012,Air Conditioning Check,In Progress,Tech-101,2025-09-05 0:00:00
+T007,C011,JC-013,Brake Check,In Progress,Tech-202,2025-09-05 0:00:00
+T007,C009,JC-014,Brake Check,Completed,Tech-202,2025-09-02 0:00:00
+T008,C007,JC-015,Air Conditioning Check,In Progress,Tech-303,2025-08-29 0:00:00
+T008,C009,JC-016,Door Repair,Completed,Tech-202,2025-09-04 0:00:00
+T009,C019,JC-017,Wheel Alignment,Pending,Tech-101,2025-08-30 0:00:00
+T009,C017,JC-018,Door Repair,Pending,Tech-101,2025-08-27 0:00:00
+T010,C006,JC-019,Sensor Calibration,Completed,Tech-101,2025-08-23 0:00:00
+T010,C020,JC-020,Lighting Fix,In Progress,Tech-202,2025-08-30 0:00:00
