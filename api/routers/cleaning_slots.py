@@ -1,49 +1,39 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from typing import List, Optional
-from kmrl_train_induction.api.deps import get_db
 from kmrl_train_induction.mock_api import models
-from kmrl_train_induction.api.schemas import CleaningSlotOut, CleaningSlotCreate, CleaningSlotUpdate
+from kmrl_train_induction.api import schemas
+from kmrl_train_induction.mock_api.database import get_db
+from typing import List
 
-router = APIRouter(prefix="/cleaning-slots", tags=["Cleaning Slots"])
+router = APIRouter(
+    prefix="/cleaning_slots",
+    tags=["Cleaning Slots"]
+)
 
-@router.get("/", response_model=List[CleaningSlotOut])
-def list_cleaning(
-    train_id: Optional[str] = None,
-    coach_id: Optional[str] = None,
-    limit: int = Query(50, ge=1, le=500),
-    offset: int = Query(0, ge=0),
-    db: Session = Depends(get_db),
-):
-    q = db.query(models.CleaningSlot)
-    if train_id: q = q.filter(models.CleaningSlot.train_id == train_id)
-    if coach_id: q = q.filter(models.CleaningSlot.coach_id == coach_id)
-    return q.order_by(models.CleaningSlot.id.desc()).offset(offset).limit(limit).all()
+@router.post("/", response_model=schemas.CleaningSlot)
+def create_slot(slot: schemas.CleaningSlotCreate, db: Session = Depends(get_db)):
+    db_slot = models.CleaningSlot(**slot.dict())
+    db.add(db_slot)
+    db.commit()
+    db.refresh(db_slot)
+    return db_slot
 
-@router.get("/{item_id}", response_model=CleaningSlotOut)
-def get_cleaning(item_id: int, db: Session = Depends(get_db)):
-    obj = db.query(models.CleaningSlot).get(item_id)
-    if not obj: raise HTTPException(404, "CleaningSlot not found")
-    return obj
+@router.get("/", response_model=List[schemas.CleaningSlot])
+def get_slots(db: Session = Depends(get_db)):
+    return db.query(models.CleaningSlot).all()
 
-@router.post("/", response_model=CleaningSlotOut, status_code=201)
-def create_cleaning(payload: CleaningSlotCreate, db: Session = Depends(get_db)):
-    obj = models.CleaningSlot(**payload.model_dump())
-    db.add(obj); db.commit(); db.refresh(obj)
-    return obj
+@router.get("/{id}", response_model=schemas.CleaningSlot)
+def get_slot(id: int, db: Session = Depends(get_db)):
+    slot = db.query(models.CleaningSlot).filter(models.CleaningSlot.id == id).first()
+    if not slot:
+        raise HTTPException(status_code=404, detail="Slot not found")
+    return slot
 
-@router.patch("/{item_id}", response_model=CleaningSlotOut)
-def update_cleaning(item_id: int, payload: CleaningSlotUpdate, db: Session = Depends(get_db)):
-    obj = db.query(models.CleaningSlot).get(item_id)
-    if not obj: raise HTTPException(404, "CleaningSlot not found")
-    for k, v in payload.model_dump(exclude_unset=True).items():
-        setattr(obj, k, v)
-    db.commit(); db.refresh(obj)
-    return obj
-
-@router.delete("/{item_id}", status_code=204)
-def delete_cleaning(item_id: int, db: Session = Depends(get_db)):
-    obj = db.query(models.CleaningSlot).get(item_id)
-    if not obj: raise HTTPException(404, "CleaningSlot not found")
-    db.delete(obj); db.commit()
-    return None
+@router.delete("/{id}")
+def delete_slot(id: int, db: Session = Depends(get_db)):
+    slot = db.query(models.CleaningSlot).filter(models.CleaningSlot.id == id).first()
+    if not slot:
+        raise HTTPException(status_code=404, detail="Slot not found")
+    db.delete(slot)
+    db.commit()
+    return {"message": "Slot deleted successfully"}
