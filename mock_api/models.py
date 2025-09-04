@@ -1,84 +1,97 @@
-from sqlalchemy import Column, Integer, String, Float, Date, DateTime
-from kmrl_train_induction.mock_api.database import Base
+from sqlalchemy import Column, String, Integer, Date, Text, TIMESTAMP
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
-# ---------------------------
-# Fitness Certificates Table
-# ---------------------------
+# -----------------------------
+# Fitness Certificates
+# -----------------------------
 class FitnessCertificate(Base):
     __tablename__ = "fitness_certificates"
-    certificate_id = Column(String(50), primary_key=True, index=True)
-    train_id = Column(String(50), index=True)
-    coach_id = Column(String(50))
-    fitness_check_date = Column(Date)
-    fitness_status = Column(String(20))
-    defects_found = Column(String)
-    issued_by = Column(String(100))
-    valid_till = Column(Date)
-    odometer_km = Column(Integer)
-    remarks = Column(String)
 
-# ---------------------------
-# Job Cards Table
-# ---------------------------
+    certificate_id = Column(String(50), primary_key=True, index=True)
+    train_id = Column(String(50), nullable=False)
+    coach_id = Column(String(50), nullable=False)
+    fitness_check_date = Column(Date, nullable=False)
+    fitness_status = Column(String(20), nullable=False)
+    defects_found = Column(Text, nullable=True)
+    issued_by = Column(String(100), nullable=True)
+    valid_till = Column(Date, nullable=True)
+    odometer_km = Column(Integer, nullable=True)
+    remarks = Column(Text, nullable=True)
+
+
+# -----------------------------
+# Job Cards
+# -----------------------------
 class JobCard(Base):
     __tablename__ = "job_cards"
-    job_id = Column(String(50), primary_key=True, index=True)
-    train_id = Column(String(50), index=True)
-    coach_id = Column(String(50))
-    task = Column(String)
-    status = Column(String)
-    assigned_to = Column(String(100))
-    scheduled_date = Column(DateTime)
 
-# ---------------------------
-# Branding Priorities Table
-# ---------------------------
+    job_id = Column(String(50), primary_key=True, index=True)
+    train_id = Column(String(50), nullable=False)
+    coach_id = Column(String(50), nullable=False)
+    task = Column(Text, nullable=False)
+    status = Column(Text, nullable=False)
+    assigned_to = Column(String(100), nullable=False)
+    scheduled_date = Column(TIMESTAMP, nullable=False)
+
+
+# -----------------------------
+# Branding Priorities
+# -----------------------------
 class BrandingPriority(Base):
     __tablename__ = "branding_priorities"
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    train_id = Column(String(50), index=True)
-    coach_id = Column(String(50))
-    brand_task = Column(String)
-    priority = Column(String)
-    deadline = Column(Date)
-    owner_team = Column(String(100))
 
-# ---------------------------
-# Mileage Balancing Table
-# ---------------------------
+    id = Column(Integer, primary_key=True, index=True)
+    train_id = Column(String(50), nullable=False)
+    coach_id = Column(String(50), nullable=False)
+    brand_task = Column(Text, nullable=False)
+    priority = Column(Text, nullable=False)
+    deadline = Column(Date, nullable=False)
+    owner_team = Column(String(100), nullable=False)
+
+
+# -----------------------------
+# Mileage Balancing
+# -----------------------------
 class MileageBalancing(Base):
     __tablename__ = "mileage_balancing"
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    train_id = Column(String(50), index=True)
-    coach_id = Column(String(50))
-    odometer_km = Column(Integer)
-    balance_action = Column(String)
-    next_due_km = Column(Integer)
-    remarks = Column(String)
 
-# ---------------------------
-# Cleaning Slots Table
-# ---------------------------
+    id = Column(Integer, primary_key=True, index=True)
+    train_id = Column(String(50), nullable=False)
+    coach_id = Column(String(50), nullable=False)
+    odometer_km = Column(Integer, nullable=False)
+    balance_action = Column(Text, nullable=False)
+    next_due_km = Column(Integer, nullable=False)
+    remarks = Column(Text, nullable=False)
+
+
+# -----------------------------
+# Cleaning Slots
+# -----------------------------
 class CleaningSlot(Base):
     __tablename__ = "cleaning_slots"
-    slot_id = Column(String(50), primary_key=True, index=True)
-    train_id = Column(String(50), index=True)
-    coach_id = Column(String(50))
-    location = Column(String(100))
-    cleaning_time = Column(DateTime)
-    cleaning_type = Column(String)
-    assigned_cleaner = Column(String(100))
 
-# ---------------------------
-# Stabling Geometry Table
-# ---------------------------
+    slot_id = Column(String(50), primary_key=True, index=True)
+    train_id = Column(String(50), nullable=False)
+    coach_id = Column(String(50), nullable=False)
+    location = Column(String(100), nullable=False)
+    cleaning_time = Column(TIMESTAMP, nullable=False)
+    cleaning_type = Column(Text, nullable=False)
+    assigned_cleaner = Column(String(100), nullable=False)
+
+
+# -----------------------------
+# Stabling Geometry
+# -----------------------------
 class StablingGeometry(Base):
     __tablename__ = "stabling_geometry"
+
     stable_id = Column(String(50), primary_key=True, index=True)
-    train_id = Column(String(50), index=True)
-    coach_id = Column(String(50))
-    length_m = Column(Integer)
-    width_m = Column(Integer)
-    height_m = Column(Integer)
-    yard_location = Column(String(100))
+    train_id = Column(String(50), nullable=False)
+    coach_id = Column(String(50), nullable=False)
+    length_m = Column(Integer, nullable=False)
+    width_m = Column(Integer, nullable=False)
+    height_m = Column(Integer, nullable=False)
+    yard_location = Column(String(100), nullable=False)

@@ -1,51 +1,39 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from typing import List, Optional
-from kmrl_train_induction.api.deps import get_db
 from kmrl_train_induction.mock_api import models
-from kmrl_train_induction.api.schemas import JobCardOut, JobCardCreate, JobCardUpdate
+from kmrl_train_induction.api import schemas
+from kmrl_train_induction.mock_api.database import get_db
+from typing import List
 
-router = APIRouter(prefix="/job-cards", tags=["Job Cards"])
+router = APIRouter(
+    prefix="/job_cards",
+    tags=["Job Cards"]
+)
 
-@router.get("/", response_model=List[JobCardOut])
-def list_jobs(
-    train_id: Optional[str] = None,
-    coach_id: Optional[str] = None,
-    status: Optional[str] = None,
-    limit: int = Query(50, ge=1, le=500),
-    offset: int = Query(0, ge=0),
-    db: Session = Depends(get_db),
-):
-    q = db.query(models.JobCard)
-    if train_id: q = q.filter(models.JobCard.train_id == train_id)
-    if coach_id: q = q.filter(models.JobCard.coach_id == coach_id)
-    if status: q = q.filter(models.JobCard.status == status)
-    return q.order_by(models.JobCard.id.desc()).offset(offset).limit(limit).all()
+@router.post("/", response_model=schemas.JobCard)
+def create_job(job: schemas.JobCardCreate, db: Session = Depends(get_db)):
+    db_job = models.JobCard(**job.dict())
+    db.add(db_job)
+    db.commit()
+    db.refresh(db_job)
+    return db_job
 
-@router.get("/{item_id}", response_model=JobCardOut)
-def get_job(item_id: int, db: Session = Depends(get_db)):
-    obj = db.query(models.JobCard).get(item_id)
-    if not obj: raise HTTPException(404, "JobCard not found")
-    return obj
+@router.get("/", response_model=List[schemas.JobCard])
+def get_jobs(db: Session = Depends(get_db)):
+    return db.query(models.JobCard).all()
 
-@router.post("/", response_model=JobCardOut, status_code=201)
-def create_job(payload: JobCardCreate, db: Session = Depends(get_db)):
-    obj = models.JobCard(**payload.model_dump())
-    db.add(obj); db.commit(); db.refresh(obj)
-    return obj
+@router.get("/{job_id}", response_model=schemas.JobCard)
+def get_job(job_id: str, db: Session = Depends(get_db)):
+    job = db.query(models.JobCard).filter(models.JobCard.job_id == job_id).first()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return job
 
-@router.patch("/{item_id}", response_model=JobCardOut)
-def update_job(item_id: int, payload: JobCardUpdate, db: Session = Depends(get_db)):
-    obj = db.query(models.JobCard).get(item_id)
-    if not obj: raise HTTPException(404, "JobCard not found")
-    for k, v in payload.model_dump(exclude_unset=True).items():
-        setattr(obj, k, v)
-    db.commit(); db.refresh(obj)
-    return obj
-
-@router.delete("/{item_id}", status_code=204)
-def delete_job(item_id: int, db: Session = Depends(get_db)):
-    obj = db.query(models.JobCard).get(item_id)
-    if not obj: raise HTTPException(404, "JobCard not found")
-    db.delete(obj); db.commit()
-    return None
+@router.delete("/{job_id}")
+def delete_job(job_id: str, db: Session = Depends(get_db)):
+    job = db.query(models.JobCard).filter(models.JobCard.job_id == job_id).first()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    db.delete(job)
+    db.commit()
+    return {"message": "Job deleted successfully"}
