@@ -1,0 +1,41 @@
+1.The core Python script that contains the rule-based scheduling logic.
+scheduler/
+└── rule_based_scheduler.py
+2.dummy_trainsets.json
+[
+  {
+    "id": "T001",
+    "mileage_since_last": 12000,
+    "days_in_operation": 20,
+    "last_induction_date": "2025-08-10"
+  },
+  {
+    "id": "T002",
+    "mileage_since_last": 8000,
+    "days_in_operation": 35,
+    "last_induction_date": "2025-07-30"
+  },
+  {
+    "id": "T003",
+    "mileage_since_last": 15000,
+    "days_in_operation": 10,
+    "last_induction_date": "2025-08-20"
+  }
+]
+
+Documentation explaining:
+
+What the script does
+
+Assumptions and rules used
+
+Input/output format
+
+How to run it
+
+Sample output
+scheduler/
+├── rule_based_scheduler.py
+├── dummy_trainsets.json
+└── README.md
+
