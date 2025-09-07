@@ -1,0 +1,21 @@
+train_id,coach_id,fitness_check_date,fitness_status,defects_found,certificate_id,issued_by,valid_till,odometer_km,remarks
+T001,C004,8/31/2025,Fail,Door sensor fault,FC-T001-C004-20250831,Inspector-101,9/7/2025,46579,OK
+T001,C018,8/30/2025,Pass,,FC-T001-C018-20250830,Inspector-101,9/29/2025,17811,OK
+T002,C007,8/28/2025,Pass,,FC-T002-C007-20250828,Inspector-101,9/27/2025,157127,Recheck in next cycle
+T002,C018,8/25/2025,Pass,,FC-T002-C018-20250825,Inspector-339,9/24/2025,82926,OK
+T003,C006,8/25/2025,Pass,,FC-T003-C006-20250825,Inspector-101,9/24/2025,66443,Monitor noise
+T003,C004,8/30/2025,Pass,,FC-T003-C004-20250830,Inspector-204,9/29/2025,100165,Monitor noise
+T004,C002,8/24/2025,Pass,,FC-T004-C002-20250824,Inspector-204,9/23/2025,30656,Monitor noise
+T004,C020,8/26/2025,Pass,,FC-T004-C020-20250826,Inspector-339,9/25/2025,28233,OK
+T005,C008,8/27/2025,Restricted,Door sensor fault,FC-T005-C008-20250827,Inspector-101,9/3/2025,109647,Monitor noise
+T005,C015,8/21/2025,Fail,Door sensor fault,FC-T005-C015-20250821,Inspector-204,8/28/2025,103132,Recheck in next cycle
+T006,C009,8/21/2025,Pass,,FC-T006-C009-20250821,Inspector-339,9/20/2025,176455,Recheck in next cycle
+T006,C018,8/28/2025,Pass,,FC-T006-C018-20250828,Inspector-204,9/27/2025,80765,Recheck in next cycle
+T007,C011,8/31/2025,Pass,,FC-T007-C011-20250831,Inspector-101,9/30/2025,92694,Follow-up required
+T007,C009,8/30/2025,Pass,,FC-T007-C009-20250830,Inspector-339,9/29/2025,198196,Monitor noise
+T008,C007,8/21/2025,Pass,,FC-T008-C007-20250821,Inspector-339,9/20/2025,130285,Recheck in next cycle
+T008,C009,8/29/2025,Pass,,FC-T008-C009-20250829,Inspector-339,9/28/2025,151289,Monitor noise
+T009,C019,8/25/2025,Restricted,Minor oil leak,FC-T009-C019-20250825,Inspector-204,9/1/2025,67493,Recheck in next cycle
+T009,C017,8/24/2025,Pass,,FC-T009-C017-20250824,Inspector-101,9/23/2025,38743,Recheck in next cycle
+T010,C006,8/21/2025,Pass,,FC-T010-C006-20250821,Inspector-101,9/20/2025,110864,Follow-up required
+T010,C020,8/24/2025,Pass,,FC-T010-C020-20250824,Inspector-339,9/23/2025,13009,OK
