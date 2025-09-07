@@ -1,0 +1,4 @@
+id,name,status,next_slot,assigned_driver,ai_confidence
+1,Metro-101,Active,10:30 AM,Driver A,0.92
+2,Metro-102,Delayed,11:00 AM,Driver B,0.78
+3,Metro-103,Maintenance,12:15 PM,Driver C,0.85
