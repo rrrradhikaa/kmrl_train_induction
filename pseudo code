@@ -1,0 +1,44 @@
+FOR each train IN train_list:
+
+    CALCULATE current_mileage = last_mileage + (today - last_maintenance_date) * avg_daily_mileage
+
+    FOR each job_card IN job_cards:
+
+        IF job_card is due:
+            due_by_mileage = current_mileage >= job_card.mileage_interval
+            due_by_days = (today - last_maintenance_date) >= job_card.days_interval
+
+            IF due_by_mileage OR due_by_days:
+
+                IF dependencies_satisfied(train, job_card):
+
+                    SELECT date WHERE workshop_capacity[date] > 0
+
+                    IF date found:
+                        ASSIGN job_card to train on selected date
+                        DECREMENT workshop_capacity[date]
+                    ELSE:
+                        PUT train in waiting_list for next available date
+
+                ENDIF
+        ENDIF
+
+    ENDFOR
+
+ENDFOR
+
+
+
+MILAGE BALANCING LOGIC:
+
+// Goal: Ensure no single train is over-utilized
+// Example: If some trains are used much more than others, rotate scheduling to balance wear.
+
+CALCULATE fleet_average_mileage = AVG(current_mileage for all trains)
+
+FOR each train:
+    IF current_mileage > fleet_average_mileage + threshold:
+        PRIORITIZE train for earlier maintenance (force job_card even if not fully due)
+
+    IF current_mileage < fleet_average_mileage - threshold:
+        DEFER non-critical job_card scheduling (if safe to do so)
