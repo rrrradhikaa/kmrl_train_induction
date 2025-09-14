@@ -101,7 +101,7 @@ def variables_view(
         db.query(
             models.StablingGeometry.train_id,
             models.StablingGeometry.coach_id,
-            func.max(models.StablingGeometry.id).label("max_id"),
+            func.max(models.StablingGeometry.stable_id).label("max_id"),
         )
         .filter(models.StablingGeometry.train_id == train_id)
         .group_by(models.StablingGeometry.train_id, models.StablingGeometry.coach_id)
@@ -112,7 +112,7 @@ def variables_view(
         and_(
             models.StablingGeometry.train_id == sub_s.c.train_id,
             models.StablingGeometry.coach_id == sub_s.c.coach_id,
-            models.StablingGeometry.id == sub_s.c.max_id,
+            models.StablingGeometry.stable_id == sub_s.c.max_id,
         ),
     )
     if coach_id:

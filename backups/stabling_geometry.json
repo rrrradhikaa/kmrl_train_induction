@@ -1,0 +1,191 @@
+[
+  {
+    "train_id": "T001",
+    "coach_id": "C004",
+    "stable_id": "STB-001",
+    "length_m": 21,
+    "width_m": 4,
+    "height_m": 5,
+    "yard_location": "Yard-1"
+  },
+  {
+    "train_id": "T001",
+    "coach_id": "C018",
+    "stable_id": "STB-002",
+    "length_m": 24,
+    "width_m": 4,
+    "height_m": 4,
+    "yard_location": "Yard-2"
+  },
+  {
+    "train_id": "T002",
+    "coach_id": "C007",
+    "stable_id": "STB-003",
+    "length_m": 24,
+    "width_m": 4,
+    "height_m": 5,
+    "yard_location": "Yard-2"
+  },
+  {
+    "train_id": "T002",
+    "coach_id": "C018",
+    "stable_id": "STB-004",
+    "length_m": 20,
+    "width_m": 4,
+    "height_m": 5,
+    "yard_location": "Yard-2"
+  },
+  {
+    "train_id": "T003",
+    "coach_id": "C006",
+    "stable_id": "STB-005",
+    "length_m": 24,
+    "width_m": 3,
+    "height_m": 4,
+    "yard_location": "Yard-3"
+  },
+  {
+    "train_id": "T003",
+    "coach_id": "C004",
+    "stable_id": "STB-006",
+    "length_m": 21,
+    "width_m": 4,
+    "height_m": 5,
+    "yard_location": "Yard-1"
+  },
+  {
+    "train_id": "T004",
+    "coach_id": "C002",
+    "stable_id": "STB-007",
+    "length_m": 23,
+    "width_m": 4,
+    "height_m": 5,
+    "yard_location": "Yard-1"
+  },
+  {
+    "train_id": "T004",
+    "coach_id": "C020",
+    "stable_id": "STB-008",
+    "length_m": 24,
+    "width_m": 4,
+    "height_m": 5,
+    "yard_location": "Yard-2"
+  },
+  {
+    "train_id": "T005",
+    "coach_id": "C008",
+    "stable_id": "STB-009",
+    "length_m": 21,
+    "width_m": 4,
+    "height_m": 4,
+    "yard_location": "Yard-1"
+  },
+  {
+    "train_id": "T005",
+    "coach_id": "C015",
+    "stable_id": "STB-010",
+    "length_m": 24,
+    "width_m": 3,
+    "height_m": 5,
+    "yard_location": "Yard-3"
+  },
+  {
+    "train_id": "T006",
+    "coach_id": "C009",
+    "stable_id": "STB-011",
+    "length_m": 22,
+    "width_m": 3,
+    "height_m": 5,
+    "yard_location": "Yard-3"
+  },
+  {
+    "train_id": "T006",
+    "coach_id": "C018",
+    "stable_id": "STB-012",
+    "length_m": 25,
+    "width_m": 4,
+    "height_m": 5,
+    "yard_location": "Yard-1"
+  },
+  {
+    "train_id": "T007",
+    "coach_id": "C011",
+    "stable_id": "STB-013",
+    "length_m": 23,
+    "width_m": 4,
+    "height_m": 4,
+    "yard_location": "Yard-2"
+  },
+  {
+    "train_id": "T007",
+    "coach_id": "C009",
+    "stable_id": "STB-014",
+    "length_m": 23,
+    "width_m": 4,
+    "height_m": 4,
+    "yard_location": "Yard-1"
+  },
+  {
+    "train_id": "T008",
+    "coach_id": "C007",
+    "stable_id": "STB-015",
+    "length_m": 25,
+    "width_m": 3,
+    "height_m": 5,
+    "yard_location": "Yard-1"
+  },
+  {
+    "train_id": "T008",
+    "coach_id": "C009",
+    "stable_id": "STB-016",
+    "length_m": 21,
+    "width_m": 4,
+    "height_m": 4,
+    "yard_location": "Yard-3"
+  },
+  {
+    "train_id": "T009",
+    "coach_id": "C019",
+    "stable_id": "STB-017",
+    "length_m": 23,
+    "width_m": 3,
+    "height_m": 5,
+    "yard_location": "Yard-2"
+  },
+  {
+    "train_id": "T009",
+    "coach_id": "C017",
+    "stable_id": "STB-018",
+    "length_m": 22,
+    "width_m": 4,
+    "height_m": 4,
+    "yard_location": "Yard-2"
+  },
+  {
+    "train_id": "T010",
+    "coach_id": "C006",
+    "stable_id": "STB-019",
+    "length_m": 25,
+    "width_m": 3,
+    "height_m": 4,
+    "yard_location": "Yard-2"
+  },
+  {
+    "train_id": "T010",
+    "coach_id": "C020",
+    "stable_id": "STB-020",
+    "length_m": 23,
+    "width_m": 3,
+    "height_m": 5,
+    "yard_location": "Yard-1"
+  },
+  {
+    "train_id": "T011",
+    "coach_id": "C003",
+    "stable_id": "STB-021",
+    "length_m": 25,
+    "width_m": 3,
+    "height_m": 2,
+    "yard_location": "Yard-3"
+  }
+]
