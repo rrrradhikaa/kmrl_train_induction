@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware   # 👈 import this
 from .routers import (
     fitness_certificates,
     job_cards,
@@ -18,6 +19,15 @@ app = FastAPI(
     title="KMRL Train Induction API",
     description="API backend for train induction, scheduling, and maintenance modules",
     version="1.0.0"
+)
+
+# 👇 Add this block right after app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # 👈 your frontend
+    allow_credentials=True,
+    allow_methods=["*"],  # allow GET, POST, PUT, DELETE etc.
+    allow_headers=["*"],  # allow all headers
 )
 
 # Routers

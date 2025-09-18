@@ -60,7 +60,7 @@ def variables_view(
         for x in filt(models.JobCard).all()
         if (x.status or "").strip().lower() in open_vals or (not x.status)
     ]
-    result["job_cards_open"] = jobs
+    result["job_cards"] = jobs
 
     # 3) Active branding (deadline >= today, sorted by priority)
     today = date.today()
@@ -68,7 +68,7 @@ def variables_view(
     branding = branding_q.filter(
         (models.BrandingPriority.deadline.is_(None)) | (models.BrandingPriority.deadline >= today)
     ).order_by(models.BrandingPriority.priority.asc().nulls_last()).all()
-    result["branding_active"] = [x.__dict__ for x in branding]
+    result["branding_priorities"] = [x.__dict__ for x in branding]
 
     # 4) Mileage latest per coach
     sub_m = (
@@ -91,7 +91,7 @@ def variables_view(
     )
     if coach_id:
         mil_q = mil_q.filter(models.MileageBalancing.coach_id == coach_id)
-    result["mileage_latest"] = [x.__dict__ for x in mil_q.all()]
+    result["mileage_balancing"] = [x.__dict__ for x in mil_q.all()]
 
     # 5) Cleaning slots (just list for that train/coach)
     result["cleaning_slots"] = [x.__dict__ for x in filt(models.CleaningSlot).all()]
@@ -117,14 +117,14 @@ def variables_view(
     )
     if coach_id:
         stab_q = stab_q.filter(models.StablingGeometry.coach_id == coach_id)
-    result["stabling_latest"] = [x.__dict__ for x in stab_q.all()]
+    result["stabling_geometry"] = [x.__dict__ for x in stab_q.all()]
 
     # Python object me SQLAlchemy state aata hai; clean kar do:
     def clean(d):
         d.pop("_sa_instance_state", None)
         return d
 
-    for k in ["fitness_certificates", "job_cards_open", "branding_active", "mileage_latest", "cleaning_slots", "stabling_latest"]:
+    for k in ["fitness_certificates", "job_cards", "branding_priorities", "mileage_balancing", "cleaning_slots", "stabling_geometry"]:
         result[k] = [clean(x) for x in result.get(k, [])]
 
     return result
