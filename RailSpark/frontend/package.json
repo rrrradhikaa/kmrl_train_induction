@@ -1,0 +1,43 @@
+{
+  "name": "railspark-frontend",
+  "version": "1.0.0",
+  "description": "AI-Driven Train Induction Planning & Scheduling for Kochi Metro Rail Limited",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite",
+    "lint": "eslint src --ext .js,.jsx",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^5.0.3",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.35.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7",
+    "vite": "^7.1.7"
+  },
+  "keywords": [
+    "react",
+    "rail",
+    "metro",
+    "scheduling",
+    "ai",
+    "induction",
+    "kmrl"
+  ],
+  "author": "RailSpark Team",
+  "license": "MIT"
+}
