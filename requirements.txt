@@ -1,0 +1,51 @@
+# Backend & API
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.12.1
+
+# Data Processing & Analysis
+pandas==2.1.3
+numpy==1.24.3
+
+# AI/ML & Optimization
+scikit-learn==1.3.2
+ortools==9.7.2996
+shap==0.43.0
+joblib==1.3.2
+
+# Frontend (if using Python for any frontend components)
+# Note: React components would typically be in a separate package.json
+
+# API Client
+requests==2.31.0
+httpx==0.25.2
+
+# Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.1.2
+
+# Utilities
+python-dotenv==1.0.0
+pytz==2023.3
+click==8.1.7
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
+
+# Documentation
+mkdocs==1.5.3
+mkdocs-material==9.5.3
+
+# Code Quality
+black==23.11.0
+flake8==6.1.0
+pre-commit==3.5.0

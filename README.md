@@ -39,9 +39,7 @@ RAILSPARK is an **AI + Rules hybrid system** that automates daily induction plan
 
 **Backend**  
 - FastAPI + Uvicorn (server)  
-- SQLAlchemy (ORM)  
-- Docker (containerization)  
-- Render (deployment)  
+- SQLAlchemy (ORM)    
 
 **Database & Data**  
 - PostgreSQL  
@@ -100,8 +98,16 @@ Rule-Based Job Scheduling Algorithm with **Priority & Time-Slot Categorization**
 ---
 
 ## 📂 Repository  
-👉 [GitHub – kmrl_train_induction](https://github.com/rrrradhikaa/kmrl_train_induction)  
+👉 [GitHub – kmrl_train_induction](https://github.com/rrrradhikaa/kmrl_train_induction/RailSpark)  
 
 ---
+ ## How to Run
+ * Go to GitHub Repository - rrrradhikaa/kmrl_train_induction/RailSpark
+ * Pull the entire repo into your device
+ * Go to -> backend/app
+ * Run -> uvicorn main:app --reload
+ * Open another terminal
+ * Go to -> railspark/frontend
+ * Run -> npx vite
 
 ✨ Built with passion by **Team RAILSPARK** for **Smart India Hackathon 2025**.  
