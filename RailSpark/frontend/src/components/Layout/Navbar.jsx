@@ -84,19 +84,32 @@ const Navbar = ({ onToggleSidebar, sidebarOpen }) => {
   };
 
   // Fetch data on component mount
-  useEffect(() => {
-    fetchTrainStats();
-    fetchNotifications();
+ useEffect(() => {
+  fetchTrainStats();
+  fetchNotifications();
 
-    // Set up polling for real-time updates (optional)
-    const statsInterval = setInterval(fetchTrainStats, 30000); // Every 30 seconds
-    const notificationsInterval = setInterval(fetchNotifications, 60000); // Every minute
+  // Start intervals
+  const statsInterval = setInterval(fetchTrainStats, 30000);
+  const notificationsInterval = setInterval(fetchNotifications, 60000);
 
-    return () => {
-      clearInterval(statsInterval);
-      clearInterval(notificationsInterval);
-    };
-  }, []);
+  // Refresh when user switches back to tab
+  const handleVisibilityChange = () => {
+    if (document.visibilityState === 'visible') {
+      fetchTrainStats();
+      fetchNotifications();
+    }
+  };
+
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+
+  // Cleanup on unmount
+  return () => {
+    clearInterval(statsInterval);
+    clearInterval(notificationsInterval);
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
+  };
+}, []);
+
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
